@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "59502853792",
+    "project_id": "salecmp-42d8b",
+    "storage_bucket": "salecmp-42d8b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59502853792:android:f4068fafb7e25363b213c5",
+        "android_client_info": {
+          "package_name": "org.example.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4wO1z9-Lqaz8feiKOFoJf_f0Z-OPjAvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
