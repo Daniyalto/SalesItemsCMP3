@@ -11,7 +11,6 @@ class SaleApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // Manually initialize Firebase (required for Compose Multiplatform)
         if (FirebaseApp.getApps(this).isEmpty()) {
 
             val options = FirebaseOptions.Builder()
@@ -24,7 +23,6 @@ class SaleApp : Application() {
             FirebaseApp.initializeApp(this, options)
         }
 
-        // Start Koin DI
         startKoin {
             androidContext(this@SaleApp)
             modules(appModule)
