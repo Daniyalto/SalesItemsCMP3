@@ -44,12 +44,12 @@ fun SalesItemsScreen(
                 title = { Text("Sales Items") },
                 actions = {
                     if (isLoggedIn) {
-                        // Viser LOG UD knappen
+                        // Viser log ud knappen
                         IconButton(onClick = onLogoutClick) {
                             Icon(Icons.Filled.ExitToApp, contentDescription = "Logout")
                         }
                     } else {
-                        // Viser LOGIN knappen
+                        // Viser login knappen
                         TextButton(onClick = onLoginClick) {
                             Text("Login")
                         }
@@ -58,7 +58,7 @@ fun SalesItemsScreen(
             )
         },
         floatingActionButton = {
-            // VIGTIGT: Vises kun hvis brugeren er logget ind
+            // Vises kun hvis brugeren er logget ind
             if (isLoggedIn) {
                 FloatingActionButton(onClick = onItemAdd) {
                     Icon(Icons.Filled.Add, contentDescription = "Add Item")
@@ -73,7 +73,7 @@ fun SalesItemsScreen(
                 .fillMaxSize()
                 .padding(horizontal = 16.dp) // Anvender padding til indholdet
         ) {
-            // Error message
+          
             if (errorMessage.isNotEmpty()) {
                 Text(
                     text = errorMessage,
@@ -133,7 +133,7 @@ fun SalesItemsScreen(
 
             Spacer(Modifier.height(8.dp))
 
-            // Sorting chips
+            // Sortering
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -197,5 +197,3 @@ fun SalesItemRowContent(
         }
     }
 }
-
-// **SwipeDeleteContainer er fjernet fra filen.**
