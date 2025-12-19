@@ -8,7 +8,7 @@ data class SaleItem (
     val price: Int,
     val sellerEmail: String,
     val sellerPhone: String,
-    val time: Long, // Ændret til Long for korrekt tidshåndtering
+    val time: Long, 
     val pictureUrl: String? = null
 )
 {
