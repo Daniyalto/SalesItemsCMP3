@@ -1,7 +1,7 @@
 package com.example.salesapp.model
-import kotlinx.serialization.Serializable // VIGTIGT: Skal tilføjes for Ktor/JSON
+import kotlinx.serialization.Serializable 
 
-@Serializable // Markerer klassen som serieliserbar for Ktor
+@Serializable 
 data class SaleItem (
     val id: Int,
     val description: String,
