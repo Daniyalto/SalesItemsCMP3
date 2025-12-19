@@ -43,10 +43,9 @@ fun App() {
                 startDestination = NavRoutes.SalesItems.route
             ) {
 
-                // ---------- REGISTER / LOGIN ----------
+                // Login
                 composable(NavRoutes.Register.route) {
                     LoginScreen(
-                        // VIGTIGT: Ved succes, navigerer vi til SalesItems
                         onLoginSuccess = {
                             navController.navigate(NavRoutes.SalesItems.route) {
                                 // Rydder login/register skærmen fra back stack
@@ -56,7 +55,7 @@ fun App() {
                     )
                 }
 
-                // ---------- SALES ITEMS LIST ----------
+                // Liste af sales items
                 composable(NavRoutes.SalesItems.route) {
                     SalesItemsScreen(
                         items = salesState.items,
@@ -72,7 +71,6 @@ fun App() {
                         onItemDelete = { item -> salesViewModel.delete(item) },
 
                         onItemAdd = {
-                            // FAB vises kun, når isLoggedIn er sandt (i SalesItemsScreen)
                             navController.navigate(NavRoutes.AddItem.route)
                         },
 
@@ -84,24 +82,19 @@ fun App() {
                             authViewModel.logout() // Kalder logout i AuthViewModel
                         },
 
-                        // ... sortering/filtrering funktioner ...
                         sortByPrice = salesViewModel::sortItemByPrice,
                         sortByDateTime = salesViewModel::sortItemByDateTime,
                         filterByDescription = salesViewModel::filterItemByDescription,
                         filterByPrice = salesViewModel::filterItemByPrice
                     )
                 }
-
-                // ---------- ITEM DETAILS ----------
                 composable(
                     route = NavRoutes.ItemDetails.route + "/{itemId}",
                     arguments = listOf(
                         navArgument("itemId") { type = NavType.IntType }
                     )
                 ) { backStackEntry ->
-
-                    // RETTELSE: Bruger nu den robuste getString -> toIntOrNull() metode
-                    // Dette er den mest kompatible metode for at undgå 'getInt' fejl.
+                    
                     val itemId = backStackEntry.arguments?.getString("itemId")?.toIntOrNull()
 
                     val item = salesState.items.find { it.id == itemId } // Sammenlign to Int?
@@ -112,14 +105,13 @@ fun App() {
                             onBack = { navController.navigateUp() }
                         )
                     } else {
-                        // Hvis varen ikke findes (pga. ugyldigt ID eller slettet), naviger tilbage
                         LaunchedEffect(Unit) {
                             navController.navigateUp()
                         }
                     }
                 }
 
-                // ---------- ADD ITEM ----------
+                // Add item
                 composable(NavRoutes.AddItem.route) {
                     AddItemScreen(
                         currentUserEmail = authState.currentUserEmail,
@@ -134,5 +126,3 @@ fun App() {
         }
     }
 }
-
-// Den fejlfunktion, du havde i din kode, er fjernet her.
