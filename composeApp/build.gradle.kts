@@ -11,14 +11,14 @@ plugins {
 }
 
 kotlin {
-    // ---------- ANDROID ----------
+    // Android
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
-    // ---------- iOS ----------
+    // iOS
     listOf(
         iosX64(),
         iosArm64(),
@@ -30,26 +30,24 @@ kotlin {
         }
     }
 
-    // ---------- DESKTOP ----------
+    // Desktop
     jvm("desktop")
 
-    // ---------- JS ----------
     js {
         browser()
         binaries.executable()
     }
 
-    // ---------- SOURCE SETS ----------
     sourceSets {
 
-        // COMMON MAIN
+        // commonMain
         val commonMain by getting {
             dependencies {
                 // Koin for Dependency Injection
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
 
-                // Ktor HTTP Client og JSON Serialization
+                // Ktor HTTP client og Json
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.contentNegotiation)
                 implementation(libs.ktor.serialization.kotlinxJson)
@@ -70,10 +68,10 @@ kotlin {
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
 
-                // Navigation - KUN Jetpack Compose Multiplatform version
+                // Navigation - Jetpack Compose Multiplatform version
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.8.0-alpha10")
 
-                // Lifecycle - KUN Jetpack Compose Multiplatform version
+                // Lifecycle - Jetpack Compose Multiplatform version
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.8.3")
 
@@ -89,7 +87,7 @@ kotlin {
             }
         }
 
-        // ANDROID MAIN
+        // androidMain
         val androidMain by getting {
             dependencies {
                 implementation(compose.preview)
@@ -107,7 +105,7 @@ kotlin {
             }
         }
 
-        // DESKTOP MAIN
+        // desktopMain
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
@@ -116,14 +114,14 @@ kotlin {
             }
         }
 
-        // JS MAIN
+        // jsMain
         val jsMain by getting {
             dependencies {
                 implementation(libs.ktor.client.js)
             }
         }
 
-        // ---------- iOS MAIN ----------
+        // iOSMain
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
